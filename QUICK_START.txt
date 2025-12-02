@@ -1,0 +1,225 @@
+================================================================================
+TRADING SIGNAL BOT - QUICK START GUIDE
+================================================================================
+
+WHAT'S INCLUDED:
+✅ main.py (3522 lines) - Complete trading bot with ALL features
+✅ auto_recover.py - Auto-recovery system (bot never goes down)
+✅ uptime_monitor.py - Uptime monitoring + Telegram alerts
+✅ requirements.txt - All Python dependencies
+✅ .env.example - Environment variables template
+✅ start.sh - Easy startup script
+✅ README.md - Complete documentation
+✅ DEPLOYMENT_GUIDE.md - Server setup instructions
+
+================================================================================
+FEATURES
+================================================================================
+✅ 14 Trading Pairs (12 Forex + Gold XAUUSD + Bitcoin BTC-USD)
+✅ Pivot Point Breakout Signals with Ichimoku Confirmation
+✅ Technical Analysis Charts (auto-generated, sent with signals)
+✅ Manual Trade Tracking (/enter /close commands)
+✅ User Filters (accuracy, pairs, R/R, break hours)
+✅ USDT Payments ($5 Signals / $10 Autotrader on TRC20)
+✅ Payment Receipt Upload & Verification
+✅ Live Support Chat with Ticket System
+✅ Daily Analytics (win rate, pips, pair performance)
+✅ 24/7 Auto-Recovery (never stays down)
+✅ Uptime Monitoring with Alerts
+✅ Bulletproof HTTP Server
+
+================================================================================
+5-MINUTE SETUP
+================================================================================
+
+1. DOWNLOAD FILES
+   └─ Download entire bot-files folder to your computer
+
+2. UPLOAD TO SERVER
+   └─ SCP: scp -r bot-files user@server.com:/home/user/
+   └─ OR upload via SFTP/FileZilla
+
+3. SSH INTO SERVER
+   └─ ssh user@server.com && cd bot-files
+
+4. SETUP ENVIRONMENT
+   └─ cp .env.example .env
+   └─ nano .env  (edit with your credentials)
+
+5. INSTALL DEPENDENCIES
+   └─ pip install -r requirements.txt
+
+6. START BOT
+   └─ bash start.sh
+   └─ OR: python3 main.py
+
+7. TEST
+   └─ Send /start to your bot on Telegram
+   └─ Check logs: tail -f logs/main.log
+
+DONE! ✅
+
+================================================================================
+REQUIRED CREDENTIALS (in .env)
+================================================================================
+
+BOT_TOKEN           - From BotFather on Telegram
+CHAT_ID             - Your Telegram chat ID
+FRED_API_KEY        - Free from https://fred.stlouisfed.org
+FINNHUB_API_KEY     - Free from https://finnhub.io
+USDT_WALLET         - Your TRC20 wallet (for payments)
+
+Optional but recommended:
+METAAPI_TOKEN       - For MT4 integration
+UPTIMEROBOT_API_KEY - For uptime monitoring
+CRONJOB_API_KEY     - For keep-alive pings
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+bot-files/
+├── main.py                    # Main bot (3522 lines) - DO NOT EDIT
+├── auto_recover.py            # Auto-recovery - DO NOT EDIT
+├── uptime_monitor.py          # Monitoring - DO NOT EDIT
+├── requirements.txt           # Dependencies
+├── .env.example              # Template (COPY to .env and EDIT)
+├── .env                      # YOUR CREDENTIALS (created from .env.example)
+├── start.sh                  # Startup script (bash start.sh)
+├── README.md                 # Full documentation
+├── DEPLOYMENT_GUIDE.md       # Server setup guide
+├── QUICK_START.txt           # This file
+└── logs/                     # Created automatically
+    ├── main.log
+    ├── auto_recover.log
+    └── uptime_monitor.log
+
+================================================================================
+COMMON COMMANDS
+================================================================================
+
+/start              - Main menu
+/history            - Last 10 signals
+/daily              - Today's stats
+/stats              - Pair performance
+/enter              - Record trade entry
+/close              - Close & calc P&L
+/subscribe          - Subscribe to signals
+/upload_receipt     - Upload payment proof
+/support            - Live chat with admin
+/signal_explanation - Why signals are generated
+/min_accuracy 80    - Set accuracy filter
+/pairs EURUSD,GBPUSD - Select pairs
+/min_rr 2.0         - Set R/R filter
+/quiet 22:00 06:00  - Set break hours
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Bot won't start?
+→ Check .env file exists
+→ Verify BOT_TOKEN is correct
+→ Run: python3 main.py (to see error)
+
+Not receiving signals?
+→ Send /start in Telegram
+→ Check /signal_explanation
+→ Verify /min_accuracy filter not too high
+
+API errors?
+→ Verify FRED_API_KEY and FINNHUB_API_KEY
+→ Check internet connection
+→ Bot continues despite API errors
+
+Need to restart?
+→ kill all processes: pkill -f python3
+→ Wait 2 seconds: sleep 2
+→ Start again: bash start.sh
+
+================================================================================
+MONITORING
+================================================================================
+
+Check if bot is running:
+  ps aux | grep python3
+
+View logs in real-time:
+  tail -f logs/main.log
+  tail -f logs/auto_recover.log
+  tail -f logs/uptime_monitor.log
+
+Monitor memory/CPU:
+  top
+
+Check disk space:
+  df -h
+
+================================================================================
+PRODUCTION SETUP (RECOMMENDED)
+================================================================================
+
+For 24/7 reliability, use PM2 or Systemd:
+
+PM2 (easier):
+  npm install -g pm2
+  pm2 start ecosystem.config.js
+  pm2 status
+
+Systemd (native):
+  See DEPLOYMENT_GUIDE.md for full instructions
+  sudo systemctl start trading-bot
+  sudo systemctl status trading-bot
+
+================================================================================
+SECURITY
+================================================================================
+
+⚠️ NEVER SHARE .env FILE!
+   - Contains API keys and secrets
+   - Always use .env.example to show template
+   - Add .env to .gitignore
+
+✅ Best Practices:
+   - Use VPN for server access
+   - Rotate API keys every 3 months
+   - Monitor bot access logs regularly
+   - Keep Python packages updated: pip install --upgrade -r requirements.txt
+
+================================================================================
+SUPPORT
+================================================================================
+
+For help:
+1. Check README.md for detailed documentation
+2. Review DEPLOYMENT_GUIDE.md for server setup
+3. Use /support command in Telegram for live chat
+4. View logs: tail -f logs/*.log
+5. Check environment: cat .env (verify values)
+
+================================================================================
+VERSION INFO
+================================================================================
+
+Bot Version: 1.0.0
+Created: December 2, 2025
+Status: ✅ Production Ready - 24/7 Stable
+Trading Pairs: 14 (12 Forex + Gold + Bitcoin)
+Features: 10 Complete + 3 Premium
+Auto-Recovery: Bulletproof
+Uptime Guarantee: 24/7 (with auto-recovery + monitoring)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Download bot-files folder
+2. Upload to your server
+3. Create .env file (copy from .env.example)
+4. Run: bash start.sh
+5. Send /start to bot on Telegram
+6. Start trading! 🚀
+
+Need help? Use /support in Telegram for live chat with admin.
+
+================================================================================
