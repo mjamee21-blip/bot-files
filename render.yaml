@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: alpha-trade-bot
+    env: python
+    repo: https://github.com/mjamee21-blip/alpha-bot
+    branch: main
+    buildCommand: pip install -r bot-files/requirements.txt
+    startCommand: python3 bot-files/main.py
+    rootDir: bot-files
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: CHAT_ID
+        sync: false
+      - key: FRED_API_KEY
+        sync: false
+      - key: FINNHUB_API_KEY
+        sync: false
+      - key: USDT_WALLET
+        sync: false
+    autoDeploy: true
